@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default:
           "text-primary font-bold hover:bg-[#EDE0D4]/90 hover:text-secondary/90 flex flex-row items-left justify-center gap-2",
         selected:
-          "text-primary font-bold bg-[#EDE0D4] text-secondary flex flex-row items-left justify-center gap-2",
+          "text-primary font-bold hover:bg-[#E9E0D4]/90 bg-[#EDE0D4] text-secondary flex flex-row items-left justify-center gap-2",
       },
       size: {
         default: "h-9 px-4 py-2",
