@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maintenance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: "hsl(30, 51%, 80%)",
+              foreground: "hsl(222.2, 47.4%, 11.2%)",
+              primary: "hsl(24, 38%, 36%)",
+              "primary-foreground": "hsl(210, 40%, 98%)",
+              secondary: "hsl(28, 31%, 55%)",
+              "secondary-foreground": "hsl(222.2, 47.4%, 11.2%)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+    </style>
+  </head>
+  <body
+    class="bg-background text-foreground flex items-center justify-center h-screen text-center"
+  >
+    <div class="p-6 max-w-lg bg-white dark:bg-gray-900 rounded-lg shadow-md">
+      <h1 class="text-3xl font-bold text-primary">Site en maintenance</h1>
+      <p class="mt-4 text-lg text-secondary">
+        Nous effectuons actuellement une mise à jour. Merci de revenir plus
+        tard.
+      </p>
+    </div>
+  </body>
+</html>
