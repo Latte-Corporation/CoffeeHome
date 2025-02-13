@@ -1,6 +1,6 @@
-# Cookie Croquis
+# Coffee Home
 
-Cookie Croquis is a lightweight template for building modern web applications with **Next.js**, **TypeScript**, **TailwindCSS**, and pre-configured **shadcn/ui** and **Magic UI** components.
+Coffee Home is the Latté Cormporation portfolio website. It showcases the company's products, services, and contact information.
 
 ---
 
@@ -19,7 +19,7 @@ Cookie Croquis is a lightweight template for building modern web applications wi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/cookie-croquis.git
+   git clone https://github.com/Latte-Corporation/CoffeeHome.git
    ```
 
 2. Install dependencies:

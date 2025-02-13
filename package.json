@@ -1,7 +1,7 @@
 {
-  "name": "cookiecroquis",
+  "name": "coffeehome",
   "version": "0.0.1",
-  "description": "Cookie Croquis is a template for Next.js applications.",
+  "description": "Coffee Home is the Latté Cormporation portfolio website",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
