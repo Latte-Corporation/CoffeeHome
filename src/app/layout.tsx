@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Red_Hat_Display } from "next/font/google";
 
 const redHatDisplay = Red_Hat_Display({
-  weight: "700",
+  weight: ["700", "400", "300"],
   subsets: ["latin-ext"],
 });
 
