@@ -8,10 +8,8 @@ export default function Sidebar() {
   const pathname = usePathname().split("/")[1];
 
   return (
-    <div className="flex flex-col min-w-64 bg-backgroundSidebar text-primary p-5">
-      <h1 className="text-xl">
-        <b>Latte Corporation</b>
-      </h1>
+    <div className="flex flex-col min-w-80 bg-backgroundSidebar text-primary p-5">
+      <h1 className="text-xl font-bold">Latte Corporation</h1>
       <div className="flex flex-col justify-between h-full">
         <nav className="mt-10 flex flex-col gap-4">
           <Button
