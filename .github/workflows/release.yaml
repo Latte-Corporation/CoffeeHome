@@ -48,35 +48,34 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+#      - name: Generate artifact attestation
+#        uses: actions/attest-build-provenance@v2
+#        with:
+#          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+#          subject-digest: ${{ steps.push.outputs.digest }}
+#          push-to-registry: true
 
-      - name: Generate artifact attestation
-        uses: actions/attest-build-provenance@v2
-        with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          subject-digest: ${{ steps.push.outputs.digest }}
-          push-to-registry: true
+# edit-helm-version:
+#   name: Edit Helm version
+#   needs: build
+#   runs-on: ubuntu-latest
+#   permissions:
+#     contents: write
+#     packages: write
+#     attestations: write
+#     id-token: write
+#   steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v4
+#       with:
+#         fetch-depth: 0
+#         ref: ${{ github.ref_name }}
 
-  # edit-helm-version:
-  #   name: Edit Helm version
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: write
-  #     packages: write
-  #     attestations: write
-  #     id-token: write
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
-  #         ref: ${{ github.ref_name }}
-
-  #     - name: Update Helm app version
-  #       run: |
-  #         sed -i "s/appVersion: \".*\"/appVersion: \"${{ github.event.release.tag_name }}\"/g" helm/Chart.yaml
-  #         git add helm/Chart.yaml
-  #         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-  #         git config --global user.name "github-actions[bot]"
-  #         git commit -m "Update app version to ${{ github.event.release.tag_name }}"
-  #         git push origin ${{ github.ref_name }}
+#     - name: Update Helm app version
+#       run: |
+#         sed -i "s/appVersion: \".*\"/appVersion: \"${{ github.event.release.tag_name }}\"/g" helm/Chart.yaml
+#         git add helm/Chart.yaml
+#         git config --global user.email "github-actions[bot]@users.noreply.github.com"
+#         git config --global user.name "github-actions[bot]"
+#         git commit -m "Update app version to ${{ github.event.release.tag_name }}"
+#         git push origin ${{ github.ref_name }}
