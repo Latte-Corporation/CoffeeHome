@@ -1,3 +1,5 @@
+import MyGitHubCalendar from "@components/github-calendar";
+import { Button } from "@components/ui/button";
 import { Card, CardContent } from "@components/ui/card";
 import {
   Carousel,
@@ -6,8 +8,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@components/ui/carousel";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Item {
   title: string;
@@ -15,7 +17,7 @@ interface Item {
   image: string;
 }
 
-const data : Item[] = [
+const data: Item[] = [
   {
     title: "Kubernetes",
     description: "Kubernetes is a container orchestration platform.",
@@ -40,12 +42,12 @@ const data : Item[] = [
     title: "Rust",
     description: "Rust is cool",
     image: "rust.svg",
-  }
+  },
 ];
 
 export default function DesktopPage() {
   return (
-    <div className="p-8 flex flex-col gap-14 overflow-hidden w-full">
+    <div className="p-8 flex flex-col gap-14 overflow-x-hidden w-full">
       <header className="flex flex-col gap-1">
         <h1 className="text-[#9C6644] text-5xl">Latte Corporation</h1>
         <h2 className="text-primary text-4xl">DevOps & Automation</h2>
@@ -83,26 +85,29 @@ export default function DesktopPage() {
                 className="w-full"
               >
                 <CarouselContent>
-                  {
-                    data.map((item, index) => (
-                      <CarouselItem
-                        key={index}
-                        className="md:basis-1/2 lg:basis-1/3"
-                        title={item.title}
-                        description={item.description}
-                      >
-                        <div className="p-1 w-full">
-                          <Card>
-                            <CardContent className="flex aspect-square items-center justify-center p-3 h-20 w-20">
-                              <span className="text-3xl font-semibold">
-                                <Image src={`/images/${item.image}`} alt={item.title} width={70} height={70}/>
-                              </span>
-                            </CardContent>
-                          </Card>
-                        </div>
-                      </CarouselItem>
-                    ))
-                  }
+                  {data.map((item, index) => (
+                    <CarouselItem
+                      key={index}
+                      className="md:basis-1/2 lg:basis-1/3"
+                      title={item.title}
+                      description={item.description}
+                    >
+                      <div className="p-1 w-full">
+                        <Card>
+                          <CardContent className="flex aspect-square items-center justify-center p-3 h-20 w-20">
+                            <span className="text-3xl font-semibold">
+                              <Image
+                                src={`/images/${item.image}`}
+                                alt={item.title}
+                                width={70}
+                                height={70}
+                              />
+                            </span>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
                 </CarouselContent>
                 <CarouselPrevious />
                 <CarouselNext />
@@ -110,18 +115,53 @@ export default function DesktopPage() {
             </div>
           </div>
         </section>
-        <hr className="border-primary"/>
+        <hr className="border-primary" />
         <section className="flex flex-col gap-10">
-          <div id="lla" className="flex flex-row gap-4">
-            <Image 
+          <div
+            id="lla"
+            className="flex flex-row gap-4 items-center h-full w-full justify-between"
+          >
+            <Image
               src="/images/lla.svg"
               alt="lla"
               width={300}
-              height={300}
-              className="fill-primary"
+              height={200}
+              className="flex-none"
             />
+            <div className="flex flex-col items-end justify-between gap-5 flex-none">
+              <div className="flex flex-col items-end">
+                <h3 className="text-3xl text-primary">Louis Labeyrie</h3>
+                <p className="text-2xl text-secondary">Cloud Architect</p>
+                <p className="text-2xl text-secondary">Solution Engineer</p>
+              </div>
+              <Button className="bg-[#DDB892] w-28">Gravatar</Button>
+            </div>
+            <div className="grow flex flex-row justify-center text-primary">
+              <MyGitHubCalendar username="Razano26" />
+            </div>
           </div>
-          <div id="dte" className="flex flex-row gap-4">
+          <div
+            id="dte"
+            className="flex flex-row gap-4 items-center h-full w-full justify-between"
+          >
+            <Image
+              src="/images/dte.svg"
+              alt="dte"
+              width={300}
+              height={200}
+              className="flex-none"
+            />
+            <div className="flex flex-col items-end justify-between gap-5 flex-none">
+              <div className="flex flex-col items-end">
+                <h3 className="text-3xl text-primary">Dorian Tetu</h3>
+                <p className="text-2xl text-secondary">Lead Developer</p>
+                <p className="text-2xl text-secondary">Solution Engineer</p>
+              </div>
+              <Button className="bg-[#DDB892] w-28">Gravatar</Button>
+            </div>
+            <div className="grow flex flex-row justify-center text-primary">
+              <MyGitHubCalendar username="Nayrode" />
+            </div>
           </div>
         </section>
       </main>
