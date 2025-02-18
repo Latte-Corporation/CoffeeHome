@@ -9,7 +9,7 @@ const redHatDisplay = Red_Hat_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Coffee Home",
+  title: "Latté",
   description: "The best code & coffee in the world.",
 };
 
