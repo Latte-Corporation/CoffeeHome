@@ -11,7 +11,6 @@ env:
 jobs:
   check-code:
     name: Check code quality
-    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     strategy:
       matrix:
