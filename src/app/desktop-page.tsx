@@ -40,14 +40,29 @@ const data: Item[] = [
     image: "terraform.svg",
   },
   {
-    title: "TypeScript",
-    description: "TypeScript is a typed superset of JavaScript.",
-    image: "typescript.svg",
+    title: "AWS",
+    description: "AWS is a cloud computing platform.",
+    image: "aws.svg",
+  },
+  {
+    title: "GCP",
+    description: "GCP is a cloud computing platform.",
+    image: "gcp.svg",
+  },
+  {
+    title: "Grafana",
+    description: "Grafana is an observability platform.",
+    image: "grafana.svg",
   },
   {
     title: "Rust",
     description: "Rust is a systems programming language.",
     image: "rust.svg",
+  },
+  {
+    title: "TypeScript",
+    description: "TypeScript is a typed superset of JavaScript.",
+    image: "typescript.svg",
   },
   {
     title: "Next.js",
