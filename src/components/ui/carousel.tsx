@@ -181,7 +181,7 @@ const CarouselItem = React.forwardRef<
   const { orientation } = useCarousel();
 
   return (
-    <div className="flex flex-col items-center min-w-44 h-fit">
+    <div className="flex flex-col items-center w-44 min-w-44 h-fit">
       <div
         ref={ref}
         role="group"
