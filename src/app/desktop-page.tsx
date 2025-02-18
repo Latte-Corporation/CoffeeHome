@@ -24,24 +24,39 @@ const data: Item[] = [
     image: "kubernetes.svg",
   },
   {
+    title: "ArgoCD",
+    description: "ArgoCD is a GitOps continuous delivery tool.",
+    image: "argocd.svg",
+  },
+  {
     title: "Ansible",
-    description: "Ansible is cool",
+    description: "Ansible is a configuration management tool.",
     image: "ansible.svg",
   },
   {
     title: "Terraform",
-    description: "Terraform is cool",
+    description: "Terraform is an infrastructure as code tool.",
     image: "terraform.svg",
   },
   {
     title: "TypeScript",
-    description: "TypeScript is cool",
+    description: "TypeScript is a typed superset of JavaScript.",
     image: "typescript.svg",
   },
   {
     title: "Rust",
-    description: "Rust is cool",
+    description: "Rust is a systems programming language.",
     image: "rust.svg",
+  },
+  {
+    title: "Next.js",
+    description: "Next.js is a React framework.",
+    image: "nextjs.svg",
+  },
+  {
+    title: "NestJS",
+    description: "NestJS is a Node.js framework.",
+    image: "nestjs.svg",
   },
 ];
 
@@ -49,7 +64,7 @@ export default function DesktopPage() {
   return (
     <div className="p-8 flex flex-col gap-14 overflow-x-hidden w-full">
       <header className="flex flex-col gap-1">
-        <h1 className="text-[#9C6644] text-5xl">Latte Corporation</h1>
+        <h1 className="text-[#9C6644] text-5xl">Latté</h1>
         <h2 className="text-primary text-4xl">DevOps & Automation</h2>
       </header>
       <main className="w-full flex flex-col gap-10">
@@ -119,7 +134,7 @@ export default function DesktopPage() {
         <section className="flex flex-col gap-10">
           <div
             id="lla"
-            className="flex flex-row gap-4 items-center h-full w-full justify-between"
+            className="flex flex-row gap-6 items-center h-full w-full justify-center 2xl:justify-between overflow-x-clip"
           >
             <Image
               src="/images/lla.svg"
@@ -136,13 +151,13 @@ export default function DesktopPage() {
               </div>
               <Button className="bg-[#DDB892] w-28">Gravatar</Button>
             </div>
-            <div className="grow flex flex-row justify-center text-primary">
+            <div className="grow hidden 2xl:flex flex-row justify-center text-primary">
               <MyGitHubCalendar username="Razano26" />
             </div>
           </div>
           <div
             id="dte"
-            className="flex flex-row gap-4 items-center h-full w-full justify-between"
+            className="flex flex-row gap-6 items-center h-full w-full justify-center 2xl:justify-between overflow-x-clip"
           >
             <Image
               src="/images/dte.svg"
@@ -159,12 +174,17 @@ export default function DesktopPage() {
               </div>
               <Button className="bg-[#DDB892] w-28">Gravatar</Button>
             </div>
-            <div className="grow flex flex-row justify-center text-primary">
+            <div className="grow hidden 2xl:flex flex-row justify-center text-primary">
               <MyGitHubCalendar username="Nayrode" />
             </div>
           </div>
         </section>
       </main>
+      <footer className="flex flex-row justify-center">
+        <p className="text-primary">
+          © LATTECORPORATION.CO, All Right Reserved.
+        </p>
+      </footer>
     </div>
   );
 }

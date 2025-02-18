@@ -193,9 +193,9 @@ const CarouselItem = React.forwardRef<
         )}
         {...props}
       />
-      <div className="flex flex-col justify-center items-center pt-5">
+      <div className="flex flex-col justify-center items-center pt-5 px-5">
         <h2 className="text-primary text-xl">{title}</h2>
-        <p className="text-justify">{description}</p>
+        <p className="text-center text-secondary text-sm">{description}</p>
       </div>
     </div>
   );
