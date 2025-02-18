@@ -1,3 +1,4 @@
+"use client";
 import MyGitHubCalendar from "@components/github-calendar";
 import { Button } from "@components/ui/button";
 import { Card, CardContent } from "@components/ui/card";
@@ -61,6 +62,11 @@ const data: Item[] = [
 ];
 
 export default function DesktopPage() {
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+
   return (
     <div className="p-8 flex flex-col gap-14 overflow-x-hidden w-full">
       <header className="flex flex-col gap-1">
@@ -149,7 +155,14 @@ export default function DesktopPage() {
                 <p className="text-2xl text-secondary">Cloud Architect</p>
                 <p className="text-2xl text-secondary">Solution Engineer</p>
               </div>
-              <Button className="bg-[#DDB892] w-28">Gravatar</Button>
+              <Button
+                className="bg-[#DDB892] w-28"
+                onClick={() =>
+                  openInNewTab("https://gravatar.com/labeyrielouis")
+                }
+              >
+                Gravatar
+              </Button>
             </div>
             <div className="grow hidden 2xl:flex flex-row justify-center text-primary">
               <MyGitHubCalendar username="Razano26" />
@@ -172,7 +185,14 @@ export default function DesktopPage() {
                 <p className="text-2xl text-secondary">Lead Developer</p>
                 <p className="text-2xl text-secondary">Solution Engineer</p>
               </div>
-              <Button className="bg-[#DDB892] w-28">Gravatar</Button>
+              <Button
+                className="bg-[#DDB892] w-28"
+                onClick={() =>
+                  openInNewTab("https://gravatar.com/doriantetu34")
+                }
+              >
+                Gravatar
+              </Button>
             </div>
             <div className="grow hidden 2xl:flex flex-row justify-center text-primary">
               <MyGitHubCalendar username="Nayrode" />
