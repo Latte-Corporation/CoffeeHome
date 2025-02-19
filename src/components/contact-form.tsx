@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "./ui/button";
+import Form from "next/form";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -19,8 +21,7 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -62,7 +63,7 @@ export default function ContactForm() {
         <h1 className="text-primary text-6xl ">Let&apos;s work together!</h1>
       </div>
 
-      <form className="space-y-12" onSubmit={handleSubmit} method="POST">
+      <Form className="space-y-12" action={handleSubmit}>
         <div className="space-y-1">
           <label className="text-primary text-2xl ">
             What&apos;s your name?
@@ -121,16 +122,16 @@ export default function ContactForm() {
             className="w-full bg-transparent border-b border-primary py-2 text-primary placeholder-primary/60 focus:outline-none focus:border-primary transition-colors resize-none"
           />
         </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded"
-          disabled={loading}
-        >
-          {loading ? "Sending..." : "Send Email"}
-        </button>
-      </form>
-
+        <div className="w-full flex justify-end">
+          <Button
+            type="submit"
+            className="bg-[#DDB892] hover:bg-[#EDE0D4]/90 text-primary"
+            disabled={loading}
+          >
+            {loading ? "Sending..." : "Send Email"}
+          </Button>
+        </div>
+      </Form>
       {success && (
         <p className="text-green-500 mt-2">Email sent successfully!</p>
       )}
