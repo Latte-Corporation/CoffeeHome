@@ -50,14 +50,12 @@ export default function ContactForm() {
   return (
     <div className="space-y-12 max-w-xl ms-10 xl:ms-0">
       <div className="space-y-4">
-        <h1 className="text-primary text-6xl font-light">
-          Let&apos;s work together!
-        </h1>
+        <h1 className="text-primary text-6xl ">Let&apos;s work together!</h1>
       </div>
 
       <form className="space-y-12">
         <div className="space-y-1">
-          <label className="text-primary text-2xl font-light">
+          <label className="text-primary text-2xl ">
             What&apos;s your name?
           </label>
           <input
@@ -71,7 +69,7 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-primary text-2xl font-light">
+          <label className="text-primary text-2xl ">
             What&apos;s your email address?
           </label>
           <input
@@ -85,7 +83,7 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-primary text-2xl font-light">
+          <label className="text-primary text-2xl ">
             What&apos;s your phone number?
           </label>
           <input
@@ -99,7 +97,7 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-primary text-2xl font-light">
+          <label className="text-primary text-2xl ">
             What&apos;s your request?
           </label>
           <textarea

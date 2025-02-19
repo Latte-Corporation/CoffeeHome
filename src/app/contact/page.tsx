@@ -7,8 +7,10 @@ export default function Page() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center h-full">
         <ContactForm />
         <div className="text-center lg:text-left hidden mx-auto xl:block">
-          <h2 className="text-3xl font-bold mb-4">We&apos;re here to help</h2>
-          <p className="text-muted-foreground mb-6">
+          <h2 className="text-3xl text-primary mb-4">
+            We&apos;re here to help
+          </h2>
+          <p className="text-secondary mb-6">
             Our team is ready to bring your ideas to life. Let&apos;s create
             something amazing together!
           </p>
