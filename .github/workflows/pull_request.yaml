@@ -48,7 +48,6 @@ jobs:
 
   check-dockerfile:
     name: Check Dockerfile
-    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -63,7 +62,6 @@ jobs:
 
   check-helm:
     name: Check Helm chart
-    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
