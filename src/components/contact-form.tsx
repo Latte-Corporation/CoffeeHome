@@ -1,8 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "./ui/button";
 import Form from "next/form";
+import { BoxReveal } from "@components/magicui/box-reveal";
+import { TextAnimate } from "@components/magicui/text-animate";
+import { BlurFade } from "@components/magicui/blur-fade";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -57,17 +60,29 @@ export default function ContactForm() {
     }
   };
 
+  const headerAnimation = useMemo(
+    () => (
+      <TextAnimate animation="slideLeft" by="character" key="header">
+        Let&apos;s work together!
+      </TextAnimate>
+    ),
+    [],
+  );
+
   return (
     <div className="space-y-12 max-w-xl ms-10 xl:ms-0">
       <div className="space-y-4">
-        <h1 className="text-primary text-6xl ">Let&apos;s work together!</h1>
+        <h1 className="text-primary text-6xl ">{headerAnimation}</h1>
       </div>
 
       <Form className="space-y-12" action={handleSubmit}>
         <div className="space-y-1">
-          <label className="text-primary text-2xl ">
-            What&apos;s your name?
-          </label>
+          <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.3}>
+            <label className="text-primary text-2xl ">
+              What&apos;s your name?
+            </label>
+          </BoxReveal>
+
           <input
             type="text"
             name="fullname"
@@ -80,9 +95,12 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-primary text-2xl ">
-            What&apos;s your email address?
-          </label>
+          <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.4}>
+            <label className="text-primary text-2xl ">
+              What&apos;s your email address?
+            </label>
+          </BoxReveal>
+
           <input
             type="email"
             name="email"
@@ -95,9 +113,12 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-primary text-2xl ">
-            What&apos;s your phone number?
-          </label>
+          <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.5}>
+            <label className="text-primary text-2xl ">
+              What&apos;s your phone number?
+            </label>
+          </BoxReveal>
+
           <input
             type="tel"
             name="phone"
@@ -109,9 +130,12 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-primary text-2xl ">
-            What&apos;s your request?
-          </label>
+          <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.6}>
+            <label className="text-primary text-2xl ">
+              What&apos;s your request?
+            </label>
+          </BoxReveal>
+
           <textarea
             rows={4}
             name="message"
@@ -123,13 +147,15 @@ export default function ContactForm() {
           />
         </div>
         <div className="w-full flex justify-end">
-          <Button
-            type="submit"
-            className="bg-[#DDB892] hover:bg-[#EDE0D4]/90 text-primary"
-            disabled={loading}
-          >
-            {loading ? "Sending..." : "Send Email"}
-          </Button>
+          <BlurFade key="submit" delay={0.2} inView>
+            <Button
+              type="submit"
+              className="bg-[#DDB892] hover:bg-[#EDE0D4]/90 text-primary"
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Send Email"}
+            </Button>
+          </BlurFade>
         </div>
       </Form>
       {success && (
