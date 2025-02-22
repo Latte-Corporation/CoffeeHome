@@ -7,7 +7,13 @@ import { BlurFade } from "@components/magicui/blur-fade";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function Page() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  });
 
   return (
     <div className="container py-12 px-8 h-full mx-0">
