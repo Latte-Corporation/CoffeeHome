@@ -17,7 +17,7 @@ export default function Page() {
 
   return (
     <div className="container py-12 px-8 h-full mx-0">
-      <div className="flex gap-8 items-center h-full">
+      <div className="flex gap-8 items-center justify-center h-full">
         <QueryClientProvider client={queryClient}>
           <ContactForm />
         </QueryClientProvider>

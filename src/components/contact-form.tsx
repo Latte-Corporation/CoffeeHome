@@ -80,12 +80,12 @@ export default function ContactForm() {
   );
 
   return (
-    <div className="space-y-12 xl:max-w-xl min-w-[530px] flex flex-col items-center xl:items-start justify-center w-full">
+    <div className="space-y-12 xl:max-w-xl min-w-[535px] flex flex-col items-center xl:items-start justify-center w-fit">
       <div className="space-y-4">
         <h1 className="text-primary text-6xl ">{headerAnimation}</h1>
       </div>
 
-      <Form className="space-y-12" action={handleSubmit}>
+      <Form className="space-y-12 w-full" action={handleSubmit}>
         <div className="space-y-1">
           <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.3}>
             <label className="text-primary text-2xl " htmlFor="fullname">
