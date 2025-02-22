@@ -1,6 +1,4 @@
 "use client";
-import MyGitHubCalendar from "@components/github-calendar";
-import { Button } from "@components/ui/button";
 import { Card, CardContent } from "@components/ui/card";
 import {
   Carousel,
@@ -11,6 +9,9 @@ import {
 } from "@components/ui/carousel";
 import Image from "next/image";
 import Link from "next/link";
+import { TextAnimate } from "@components/magicui/text-animate";
+import { Profile } from "@components/profile";
+import { BoxReveal } from "@components/magicui/box-reveal";
 
 interface Item {
   title: string;
@@ -77,22 +78,27 @@ const data: Item[] = [
 ];
 
 export default function DesktopPage() {
-  const openInNewTab = (url) => {
-    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
-    if (newWindow) newWindow.opener = null;
-  };
-
   return (
     <div className="p-8 flex flex-col gap-14 overflow-x-hidden w-full">
       <header className="flex flex-col gap-1">
-        <h1 className="text-[#9C6644] text-5xl">Latté</h1>
-        <h2 className="text-primary text-4xl">DevOps & Automation</h2>
+        <h1 className="text-[#9C6644] text-5xl">
+          <TextAnimate animation="slideLeft" by="character">
+            Latté
+          </TextAnimate>
+        </h1>
+        <h2 className="text-primary text-4xl">
+          <TextAnimate animation="slideLeft" by="character">
+            DevOps & Automation
+          </TextAnimate>
+        </h2>
       </header>
       <main className="w-full flex flex-col gap-10">
         <section className="flex flex-col w-full gap-10 xl:flex-row xl:gap-0">
           <div className="flex w-full gap-14 xl:w-1/3 xl:flex-col flex-row-reverse justify-end">
             <div className="flex flex-col gap-4">
-              <h3 className="text-3xl text-primary">Who are we ?</h3>
+              <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.5}>
+                <h3 className="text-3xl text-primary">Who are we ?</h3>
+              </BoxReveal>
               <div className="flex flex-col text-secondary text-xl">
                 <p>We are 2 DevOps Engineer</p>
                 <Link href="/about" className="underline">
@@ -101,11 +107,18 @@ export default function DesktopPage() {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <h3 className="text-3xl text-primary">What do we do ?</h3>
+              <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.5}>
+                <h3 className="text-3xl text-primary">What do we do ?</h3>
+              </BoxReveal>
               <div className="flex flex-col text-secondary text-xl">
-                <p>Automation, CI/CD,</p>
-                <p>Web development &</p>
-                <p>Cloud deployment</p>
+                <TextAnimate
+                  animation="fadeIn"
+                  by="line"
+                  as="p"
+                  className="text-secondary mb-6"
+                >
+                  {`Automation, CI/CD,\nWeb development &\nCloud deployment`}
+                </TextAnimate>
               </div>
             </div>
           </div>
@@ -153,66 +166,20 @@ export default function DesktopPage() {
         </section>
         <hr className="border-primary" />
         <section className="flex flex-col gap-10">
-          <div
-            id="lla"
-            className="flex flex-row gap-6 items-center h-full w-full justify-center 2xl:justify-between overflow-x-clip"
-          >
-            <Image
-              src="/images/lla.svg"
-              alt="lla"
-              width={300}
-              height={200}
-              className="flex-none"
-            />
-            <div className="flex flex-col items-end justify-between gap-5 flex-none">
-              <div className="flex flex-col items-end">
-                <h3 className="text-3xl text-primary">Louis Labeyrie</h3>
-                <p className="text-2xl text-secondary">Cloud Architect</p>
-                <p className="text-2xl text-secondary">Solution Engineer</p>
-              </div>
-              <Button
-                className="bg-[#DDB892] w-28"
-                onClick={() =>
-                  openInNewTab("https://gravatar.com/labeyrielouis")
-                }
-              >
-                Gravatar
-              </Button>
-            </div>
-            <div className="grow hidden 2xl:flex flex-row justify-center text-primary">
-              <MyGitHubCalendar username="Razano26" />
-            </div>
-          </div>
-          <div
-            id="dte"
-            className="flex flex-row gap-6 items-center h-full w-full justify-center 2xl:justify-between overflow-x-clip"
-          >
-            <Image
-              src="/images/dte.svg"
-              alt="dte"
-              width={300}
-              height={200}
-              className="flex-none"
-            />
-            <div className="flex flex-col items-end justify-between gap-5 flex-none">
-              <div className="flex flex-col items-end">
-                <h3 className="text-3xl text-primary">Dorian Tetu</h3>
-                <p className="text-2xl text-secondary">Lead Developer</p>
-                <p className="text-2xl text-secondary">Solution Engineer</p>
-              </div>
-              <Button
-                className="bg-[#DDB892] w-28"
-                onClick={() =>
-                  openInNewTab("https://gravatar.com/doriantetu34")
-                }
-              >
-                Gravatar
-              </Button>
-            </div>
-            <div className="grow hidden 2xl:flex flex-row justify-center text-primary">
-              <MyGitHubCalendar username="Nayrode" />
-            </div>
-          </div>
+          <Profile
+            fullName="Louis Labeyrie"
+            trigram="lla"
+            role={["Cloud Architect", "Solution Engineer"]}
+            gravatarUrl="labeyrielouis"
+            githubUsername="razano26"
+          />
+          <Profile
+            fullName="Dorian Tetu"
+            trigram="dte"
+            role={["Lead Developer", "Solution Engineer"]}
+            gravatarUrl="doriantetu34"
+            githubUsername="Nayrode"
+          />
         </section>
       </main>
       <footer className="flex flex-row justify-center">
