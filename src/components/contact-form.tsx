@@ -60,7 +60,9 @@ export default function ContactForm() {
     onError: (error) => {
       toast({
         title: "Error sending email",
-        description: (error as AxiosError).message || "Unknown error occurred",
+        description:
+          (error as AxiosError<{ error: string }>).response?.data?.error ||
+          "Unknown error occurred",
       });
     },
     onSettled: () => {
