@@ -1,11 +1,14 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { Button } from "./ui/button";
-import Form from "next/form";
+import { BlurFade } from "@components/magicui/blur-fade";
 import { BoxReveal } from "@components/magicui/box-reveal";
 import { TextAnimate } from "@components/magicui/text-animate";
-import { BlurFade } from "@components/magicui/blur-fade";
+import { useToast } from "@hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
+import Form from "next/form";
+import { useMemo, useState } from "react";
+import { Button } from "./ui/button";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -15,8 +18,8 @@ export default function ContactForm() {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+
+  const { toast } = useToast();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -25,13 +28,11 @@ export default function ContactForm() {
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
-    setError(null);
-    setSuccess(false);
-
     if (!formData.fullname || !formData.email || !formData.message) {
-      setError("Please fill in all required fields.");
-      setLoading(false);
+      toast({
+        title: "Missing required fields",
+        description: "Please fill out all required fields",
+      });
       return;
     }
 
@@ -40,25 +41,32 @@ export default function ContactForm() {
       message: `Email: ${formData.email}\nPhone: ${formData.phone}\n\n${formData.message}`,
     };
 
-    try {
-      const response = await fetch("/api/send-mail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(mailPayload),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error ${response.status}: ${await response.text()}`);
-      }
-
-      setSuccess(true);
-      setFormData({ fullname: "", email: "", phone: "", message: "" });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Unknown error occurred");
-    } finally {
-      setLoading(false);
-    }
+    setLoading(true);
+    mutation.mutate(mailPayload);
   };
+
+  const mutation = useMutation({
+    mutationFn: async (mailPayload: { subject: string; message: string }) => {
+      const response = await axios.post("/api/send-mail", mailPayload);
+      return response.data;
+    },
+    onSuccess: () => {
+      setFormData({ fullname: "", email: "", phone: "", message: "" });
+      toast({
+        title: "Email sent successfully!",
+        description: "We will get back to you soon.",
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: "Error sending email",
+        description: (error as AxiosError).message || "Unknown error occurred",
+      });
+    },
+    onSettled: () => {
+      setLoading(false);
+    },
+  });
 
   const headerAnimation = useMemo(
     () => (
@@ -70,7 +78,7 @@ export default function ContactForm() {
   );
 
   return (
-    <div className="space-y-12 max-w-xl ms-10 xl:ms-0">
+    <div className="space-y-12 xl:max-w-xl min-w-[530px] flex flex-col items-center xl:items-start justify-center w-full">
       <div className="space-y-4">
         <h1 className="text-primary text-6xl ">{headerAnimation}</h1>
       </div>
@@ -78,12 +86,13 @@ export default function ContactForm() {
       <Form className="space-y-12" action={handleSubmit}>
         <div className="space-y-1">
           <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.3}>
-            <label className="text-primary text-2xl ">
+            <label className="text-primary text-2xl " htmlFor="fullname">
               What&apos;s your name?
             </label>
           </BoxReveal>
 
           <input
+            id="fullname"
             type="text"
             name="fullname"
             required
@@ -96,7 +105,7 @@ export default function ContactForm() {
 
         <div className="space-y-1">
           <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.4}>
-            <label className="text-primary text-2xl ">
+            <label htmlFor="email" className="text-primary text-2xl ">
               What&apos;s your email address?
             </label>
           </BoxReveal>
@@ -114,7 +123,7 @@ export default function ContactForm() {
 
         <div className="space-y-1">
           <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.5}>
-            <label className="text-primary text-2xl ">
+            <label htmlFor="phone" className="text-primary text-2xl ">
               What&apos;s your phone number?
             </label>
           </BoxReveal>
@@ -131,7 +140,7 @@ export default function ContactForm() {
 
         <div className="space-y-1">
           <BoxReveal boxColor={"hsl(30 52% 72%)"} duration={0.6}>
-            <label className="text-primary text-2xl ">
+            <label htmlFor="message" className="text-primary text-2xl ">
               What&apos;s your request?
             </label>
           </BoxReveal>
@@ -151,17 +160,18 @@ export default function ContactForm() {
             <Button
               type="submit"
               className="bg-[#DDB892] hover:bg-[#EDE0D4]/90 text-primary"
-              disabled={loading}
+              disabled={
+                loading ||
+                !formData.fullname ||
+                !formData.email ||
+                !formData.message
+              }
             >
               {loading ? "Sending..." : "Send Email"}
             </Button>
           </BlurFade>
         </div>
       </Form>
-      {success && (
-        <p className="text-green-500 mt-2">Email sent successfully!</p>
-      )}
-      {error && <p className="text-red-500 mt-2">{error}</p>}
     </div>
   );
 }
