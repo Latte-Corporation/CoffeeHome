@@ -2,7 +2,7 @@
 import { Button } from "@components/ui/button";
 import { HomeIcon, UserIcon } from "@heroicons/react/24/outline";
 import { usePathname, useRouter } from "next/navigation";
-import Waves from "./ui/waves";
+import Waves from "@components/ui/waves";
 
 export default function Sidebar() {
   const router = useRouter();
@@ -41,7 +41,6 @@ export default function Sidebar() {
             <h2 className="pl-3 text-base">Contact</h2>
           </Button>
         </nav>
-        <Button className="bg-[#E6CCB2] h-14">Request a demo</Button>
       </div>
     </div>
   );
