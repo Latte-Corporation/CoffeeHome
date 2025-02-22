@@ -1,4 +1,5 @@
 import Sidebar from "@components/sidebar";
+import { Toaster } from "@components/ui/toaster";
 import "@styles/global.css";
 import type { Metadata } from "next";
 import { Red_Hat_Display } from "next/font/google";
@@ -25,6 +26,7 @@ export default function RootLayout({
       >
         <Sidebar />
         {children}
+        <Toaster />
       </body>
     </html>
   );
