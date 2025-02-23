@@ -101,3 +101,11 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+smtp:
+  host: mail.example.com
+  user: ""
+  passwordSecret: ""
+  passwordKey: password
+  sendFrom: ""
+  sendTo: ""
