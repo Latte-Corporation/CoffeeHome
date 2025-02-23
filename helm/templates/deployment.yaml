@@ -46,6 +46,31 @@ spec:
           {{- with .Values.extraEnv }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          - name: SMTP_SERVER_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: smtp-config
+                key: smtp.host
+          - name: SMTP_SERVER_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: smtp-config
+                key: smtp.user
+          - name: SMTP_SERVER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.smtp.passwordSecret }}
+                key: {{ .Values.smtp.passwordKey }}
+          - name: SITE_MAIL_SENDER
+            valueFrom:
+              configMapKeyRef:
+                name: smtp-config
+                key: smtp.sendFrom
+          - name: SITE_MAIL_RECEIVER
+            valueFrom:
+              configMapKeyRef:
+                name: smtp-config
+                key: smtp.sendTo
           {{- with .Values.livenessProbe }}
           livenessProbe:
             {{- toYaml . | nindent 12 }}

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: smtp-config
+data:
+  smtp.host: {{ .Values.smtp.host }}
+  smtp.user: {{ .Values.smtp.user }}
+  smtp.sendFrom: {{ .Values.smtp.sendFrom }}
+  smtp.sendTo: {{ .Values.smtp.sendTo }}
