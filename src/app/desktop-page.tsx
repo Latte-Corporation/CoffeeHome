@@ -195,7 +195,7 @@ export default function DesktopPage() {
           />
         </section>
       </main>
-      <footer className="flex flex-row justify-center">
+      <footer className="flex flex-row justify-center h-full items-end">
         <p className="text-primary">
           © LATTECORPORATION.CO, All Right Reserved.
         </p>
