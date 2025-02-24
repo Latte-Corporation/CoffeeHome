@@ -21,6 +21,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="3d6c2e92-e74e-43a0-8078-868e3d2bd6e8"
+        ></script>
+      </head>
       <body
         className={`${redHatDisplay.className} flex flex-row h-screen w-screen`}
       >
