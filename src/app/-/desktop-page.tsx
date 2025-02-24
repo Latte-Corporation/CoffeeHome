@@ -126,7 +126,7 @@ export default function DesktopPage() {
                   animation="fadeIn"
                   by="line"
                   as="p"
-                  className="text-secondary mb-6"
+                  className="text-secondary"
                 >
                   {`We are 2 DevOps Engineer`}
                 </TextAnimate>
