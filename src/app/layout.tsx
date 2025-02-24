@@ -11,7 +11,25 @@ const redHatDisplay = Red_Hat_Display({
 
 export const metadata: Metadata = {
   title: "Latté",
+  applicationName: "Latté",
   description: "The best code & coffee in the world.",
+  authors: [{ name: "Louis Labeyrie" }, { name: "Louis Labeyrie" }],
+  keywords: ["code", "coffee", "latté", "devops", "kubernetes", "freelance"],
+  openGraph: {
+    title: "Latté",
+    description: "The best code & coffee in the world.",
+    url: "https://lattecorp.dev",
+    siteName: "Latté",
+    images: [
+      {
+        url: "https://img.goodfon.com/original/5824x3264/b/7f/marshmallows-hot-cocoa-coffee-steam-heat.jpg",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const env = process.env.NODE_ENV;
