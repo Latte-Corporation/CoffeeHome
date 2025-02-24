@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: "The best code & coffee in the world.",
 };
 
+const env = process.env.NODE_ENV;
+
 export default function RootLayout({
   children,
 }: {
@@ -22,11 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="3d6c2e92-e74e-43a0-8078-868e3d2bd6e8"
-        ></script>
+        {env === "production" ? (
+          <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="3d6c2e92-e74e-43a0-8078-868e3d2bd6e8"
+          ></script>
+        ) : null}
       </head>
       <body
         className={`${redHatDisplay.className} flex flex-row h-screen w-screen`}
