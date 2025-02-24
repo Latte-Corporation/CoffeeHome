@@ -25,8 +25,8 @@ export async function sendMail({
     await transporter.verify();
 
     const info = await transporter.sendMail({
-      from: `"Coffee Home" <${process.env.SITE_MAIL_RECIEVER}>`,
-      to: sendTo || process.env.SITE_MAIL_RECIEVER,
+      from: `"Coffee Home" <${process.env.SITE_MAIL_RECEIVER}>`,
+      to: sendTo || process.env.SITE_MAIL_RECEIVER,
       subject,
       text,
       html: html || "",
