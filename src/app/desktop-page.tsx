@@ -12,6 +12,7 @@ import Link from "next/link";
 import { TextAnimate } from "@components/magicui/text-animate";
 import { Profile } from "@components/profile";
 import { BoxReveal } from "@components/magicui/box-reveal";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface Item {
   title: string;
@@ -78,6 +79,14 @@ const data: Item[] = [
 ];
 
 export default function DesktopPage() {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  });
+
   return (
     <div className="p-8 flex flex-col gap-14 overflow-x-hidden w-full">
       <header className="flex flex-col gap-1">
@@ -179,20 +188,22 @@ export default function DesktopPage() {
         </section>
         <hr className="border-primary" />
         <section className="flex flex-col gap-10">
-          <Profile
-            fullName="Louis Labeyrie"
-            trigram="lla"
-            role={["Cloud Architect", "Solution Engineer"]}
-            gravatarUrl="labeyrielouis"
-            githubUsername="razano26"
-          />
-          <Profile
-            fullName="Dorian Tetu"
-            trigram="dte"
-            role={["Lead Developer", "Solution Engineer"]}
-            gravatarUrl="doriantetu34"
-            githubUsername="Nayrode"
-          />
+          <QueryClientProvider client={queryClient}>
+            <Profile
+              fullName="Louis Labeyrie"
+              trigram="lla"
+              role={["Cloud Architect", "Solution Engineer"]}
+              gravatarUrl="labeyrielouis"
+              githubUsername="razano26"
+            />
+            <Profile
+              fullName="Dorian Tetu"
+              trigram="dte"
+              role={["Lead Developer", "Solution Engineer"]}
+              gravatarUrl="doriantetu34"
+              githubUsername="Nayrode"
+            />
+          </QueryClientProvider>
         </section>
       </main>
       <footer className="flex flex-row justify-center h-full items-end">
