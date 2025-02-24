@@ -12,6 +12,7 @@ import Link from "next/link";
 import { TextAnimate } from "@components/magicui/text-animate";
 import { Profile } from "@components/profile";
 import { BoxReveal } from "@components/magicui/box-reveal";
+import { BlurFade } from "@components/magicui/blur-fade";
 
 interface Item {
   title: string;
@@ -136,45 +137,47 @@ export default function DesktopPage() {
             </div>
           </div>
           <div className="flex-col w-full justify-center items-center xl:w-2/3">
-            <div
-              id="carousel"
-              className="w-full bg-[#EDE0D4] h-72 flex justify-center items-center rounded-md px-16"
-            >
-              <Carousel
-                opts={{
-                  align: "start",
-                }}
-                className="w-full"
+            <BlurFade>
+              <div
+                id="carousel"
+                className="w-full bg-[#EDE0D4] h-72 flex justify-center items-center rounded-md px-16"
               >
-                <CarouselContent>
-                  {data.map((item, index) => (
-                    <CarouselItem
-                      key={index}
-                      className="md:basis-1/2 lg:basis-1/3"
-                      title={item.title}
-                      description={item.description}
-                    >
-                      <div className="p-1 w-full">
-                        <Card>
-                          <CardContent className="flex aspect-square items-center justify-center p-3 h-20 w-20">
-                            <span className="text-3xl font-semibold">
-                              <Image
-                                src={`/images/${item.image}`}
-                                alt={item.title}
-                                width={70}
-                                height={70}
-                              />
-                            </span>
-                          </CardContent>
-                        </Card>
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
-            </div>
+                <Carousel
+                  opts={{
+                    align: "start",
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent>
+                    {data.map((item, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="md:basis-1/2 lg:basis-1/3"
+                        title={item.title}
+                        description={item.description}
+                      >
+                        <div className="p-1 w-full">
+                          <Card>
+                            <CardContent className="flex aspect-square items-center justify-center p-3 h-20 w-20">
+                              <span className="text-3xl font-semibold">
+                                <Image
+                                  src={`/images/${item.image}`}
+                                  alt={item.title}
+                                  width={70}
+                                  height={70}
+                                />
+                              </span>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              </div>
+            </BlurFade>
           </div>
         </section>
         <hr className="border-primary" />
