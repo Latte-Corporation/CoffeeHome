@@ -1,6 +1,6 @@
 "use client";
 import MokaPot from "@components/3d/moka-pot";
-import ContactForm from "@components/pages/contact-form";
+import ContactForm from "@components/contact-form";
 import { BoxReveal } from "@components/magicui/box-reveal";
 import { TextAnimate } from "@components/magicui/text-animate";
 import { BlurFade } from "@components/magicui/blur-fade";
