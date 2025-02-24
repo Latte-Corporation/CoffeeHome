@@ -79,25 +79,40 @@ const data: Item[] = [
 ];
 
 export default function DesktopPage() {
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+
   return (
     <div className="p-8 hidden sm:flex flex-col gap-14 overflow-x-hidden w-full">
-      <header className="flex flex-col gap-1">
-        <TextAnimate
-          as="h1"
-          className="text-[#9C6644] text-5xl"
-          animation="slideLeft"
-          by="character"
-        >
-          Latté
-        </TextAnimate>
-        <TextAnimate
-          as="h2"
-          className="text-primary text-4xl"
-          animation="slideLeft"
-          by="character"
-        >
-          DevOps & Automation
-        </TextAnimate>
+      <header className="flex flex-row justify-between items-start">
+        <div className="flex flex-col">
+          <TextAnimate
+            as="h1"
+            className="text-[#9C6644] text-5xl"
+            animation="slideLeft"
+            by="word"
+          >
+            Latté
+          </TextAnimate>
+          <TextAnimate
+            as="h2"
+            className="text-primary text-4xl"
+            animation="slideLeft"
+            by="word"
+          >
+            DevOps & Automation
+          </TextAnimate>
+        </div>
+        <Image
+          src="/images/github.svg"
+          alt="Menu"
+          width={40}
+          height={40}
+          onClick={() => openInNewTab("https://github.com/Latte-Corporation")}
+          className="hover:cursor-pointer"
+        />
       </header>
       <main className="w-full flex flex-col gap-10">
         <section className="flex flex-col w-full gap-10 xl:flex-row xl:gap-0">
