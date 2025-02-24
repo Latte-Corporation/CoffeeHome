@@ -1,14 +1,18 @@
-export default function Waves() {
+export default function Waves({
+  colorTop = "#7f5539",
+  colorBottom = "#DDB892",
+  height = "5%",
+}) {
   return (
     <svg
       width="100%"
-      height="5%"
+      height={height}
       viewBox="0 0 1000 1000"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
       overflow="auto"
       shapeRendering="auto"
-      className="bg-primary"
+      style={{ backgroundColor: colorTop }}
     >
       <defs>
         <path
@@ -18,7 +22,7 @@ export default function Waves() {
         <path id="motionpath" d="M -300 0 0 0" />
       </defs>
       <g>
-        <use xlinkHref="#wavepath" y="-25" fill="#DDB892">
+        <use xlinkHref="#wavepath" y="-25" fill={colorBottom}>
           <animateMotion dur="5s" repeatCount="indefinite">
             <mpath xlinkHref="#motionpath" />
           </animateMotion>

@@ -1,6 +1,6 @@
 "use client";
 import MokaPot from "@components/3d/moka-pot";
-import ContactForm from "@components/contact-form";
+import ContactForm from "@components/pages/contact-form";
 import { BoxReveal } from "@components/magicui/box-reveal";
 import { TextAnimate } from "@components/magicui/text-animate";
 import { BlurFade } from "@components/magicui/blur-fade";
@@ -16,8 +16,8 @@ export default function Page() {
   });
 
   return (
-    <div className="container py-12 px-8 h-full mx-0">
-      <div className="flex gap-8 items-center justify-center h-full">
+    <div className="container px-8 h-full mx-0 w-full">
+      <div className="flex gap-8 items-center justify-center h-full w-full">
         <QueryClientProvider client={queryClient}>
           <ContactForm />
         </QueryClientProvider>

@@ -9,7 +9,7 @@ export default function Sidebar() {
   const pathname = usePathname().split("/")[1];
 
   return (
-    <div className="flex flex-col min-w-64 max-w-64 bg-backgroundSidebar text-primary">
+    <div className="hidden sm:flex flex-col min-w-64 max-w-64 w-64 bg-backgroundSidebar text-primary">
       <div className="bg-primary w-full p-5">
         <h1 className="text-xl font-bold text-[#EDE0D4]">Latté</h1>
       </div>
