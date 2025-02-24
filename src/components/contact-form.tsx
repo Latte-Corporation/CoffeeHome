@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import Form from "next/form";
 import { useMemo, useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "@components/ui/button";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -72,7 +72,12 @@ export default function ContactForm() {
 
   const headerAnimation = useMemo(
     () => (
-      <TextAnimate animation="slideLeft" by="character" key="header">
+      <TextAnimate
+        animation="slideLeft"
+        by="word"
+        key="header"
+        startOnView={false}
+      >
         Let&apos;s work together!
       </TextAnimate>
     ),
@@ -80,7 +85,7 @@ export default function ContactForm() {
   );
 
   return (
-    <div className="space-y-12 xl:max-w-xl min-w-[535px] flex flex-col items-center xl:items-start justify-center w-fit">
+    <div className="space-y-12 xl:max-w-xl flex flex-col items-center xl:items-start justify-center w-full">
       <div className="space-y-4">
         <h1 className="text-primary text-6xl ">{headerAnimation}</h1>
       </div>
@@ -158,7 +163,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="w-full flex justify-end">
-          <BlurFade key="submit" delay={0.2} inView>
+          <BlurFade key="submit" delay={0.2}>
             <Button
               type="submit"
               className="bg-[#DDB892] hover:bg-[#EDE0D4]/90 text-primary"

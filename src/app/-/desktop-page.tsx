@@ -79,7 +79,7 @@ const data: Item[] = [
 
 export default function DesktopPage() {
   return (
-    <div className="p-8 flex flex-col gap-14 overflow-x-hidden w-full">
+    <div className="p-8 hidden sm:flex flex-col gap-14 overflow-x-hidden w-full">
       <header className="flex flex-col gap-1">
         <TextAnimate
           as="h1"
