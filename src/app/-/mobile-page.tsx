@@ -2,7 +2,7 @@ import Waves from "@components/ui/waves";
 import Link from "next/link";
 import Image from "next/image";
 import { Profile } from "@components/profile";
-import ContactForm from "@components/pages/contact-form";
+import ContactForm from "@components/contact-form";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import MokaPot from "@components/3d/moka-pot";
 import { BoxReveal } from "@components/magicui/box-reveal";
