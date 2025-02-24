@@ -33,6 +33,7 @@ export default function MokaPot() {
           <OrbitControls
             enableZoom={false}
             enableRotate={true}
+            enablePan={false}
             target={[0, 0, 0]}
           />
         </group>
