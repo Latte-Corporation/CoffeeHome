@@ -18,6 +18,11 @@ export default function MobilePage() {
     },
   });
 
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+
   return (
     <div className="sm:hidden h-full w-full">
       <header className="flex items-center justify-between w-full p-8">
@@ -27,7 +32,13 @@ export default function MobilePage() {
           width={40}
           height={40}
         />
-        <Image src="/images/github.svg" alt="Menu" width={40} height={40} />
+        <Image
+          src="/images/github.svg"
+          alt="Menu"
+          width={40}
+          height={40}
+          onClick={() => openInNewTab("https://github.com/Latte-Corporation")}
+        />
       </header>
       <div className="flex flex-col justify-start w-full px-8 gap-5 py-4">
         <TextAnimate
@@ -49,7 +60,7 @@ export default function MobilePage() {
           DevOps & Automation
         </TextAnimate>
       </div>
-      <Waves colorTop="" colorBottom="#7f5539" height="20%" />
+      <Waves colorTop="#e6ccb2" colorBottom="#7f5539" height="20%" />
       <div className="bg-primary flex flex-col gap-5 w-full h-fit">
         <div className="flex flex-col gap-4 px-8 flex-wrap items-start">
           <BoxReveal boxColor={"hsl(30 51% 80%)"}>
