@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import Form from "next/form";
 import { useMemo, useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@components/ui/button";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({

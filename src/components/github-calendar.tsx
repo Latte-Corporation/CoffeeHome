@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import MuiTooltip from "@mui/material/Tooltip";
 import GitHubCalendar from "react-github-calendar";
-import { BlurFade } from "./magicui/blur-fade";
+import { BlurFade } from "@components/magicui/blur-fade";
 
 export default function MyGitHubCalendar({ username }) {
   const [loading, setLoading] = useState(true);
